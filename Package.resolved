@@ -1,0 +1,34 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "GenericJSON",
+        "repositoryURL": "https://github.com/zoul/generic-json-swift.git",
+        "state": {
+          "branch": null,
+          "revision": "a137894b2a217abe489cdf1ea287e6f7819b1051",
+          "version": "2.0.1"
+        }
+      },
+      {
+        "package": "swift-email",
+        "repositoryURL": "https://github.com/Frizlab/swift-email.git",
+        "state": {
+          "branch": null,
+          "revision": "f73b72d8e2b15034e31381490c49d281b3b5acde",
+          "version": "0.2.2"
+        }
+      },
+      {
+        "package": "UnwrapOrThrow",
+        "repositoryURL": "https://github.com/Frizlab/UnwrapOrThrow.git",
+        "state": {
+          "branch": null,
+          "revision": "b7a5ead174096f816030508f223a4f7030970299",
+          "version": "1.0.0-beta.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

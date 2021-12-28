@@ -1,0 +1,3 @@
+# officectl-model
+
+The model for officectl’s API.
