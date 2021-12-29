@@ -11,4 +11,11 @@ public struct ApiService : Codable {
 	
 	public var isHelperService: Bool
 	
+	public init(providerId: String, serviceId: String, serviceFullName: String, isHelperService: Bool) {
+		self.providerId = providerId
+		self.serviceId = serviceId
+		self.serviceFullName = serviceFullName
+		self.isHelperService = isHelperService
+	}
+	
 }

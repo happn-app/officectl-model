@@ -2,10 +2,8 @@ import Foundation
 
 
 
-public enum AuthScope : String, Codable, Hashable, Equatable {
+public enum AuthScope : String, CaseIterable, Codable, Hashable, Equatable {
 	
-	case userList = "user_list"
-	case userCreate = "user_create"
-	case userDelete = "user_delete"
+	case admin = "admin"
 	
 }

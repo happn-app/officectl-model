@@ -11,5 +11,5 @@ public struct ApiSearchResult<RequestType : Codable, ResultType : Codable> : Cod
 	
 }
 
-typealias ApiUserSearchResult = ApiSearchResult<TaggedId, ApiUser>
-typealias ApiUsersSearchResult = ApiSearchResult<String, [ApiUser]>
+public typealias ApiUserSearchResult = ApiSearchResult<TaggedId, ApiUser>
+public typealias ApiUsersSearchResult = ApiSearchResult<String, [ApiUser]>

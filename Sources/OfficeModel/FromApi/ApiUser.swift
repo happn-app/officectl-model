@@ -4,14 +4,14 @@ import Email
 
 
 
-struct ApiUser : Codable {
+public struct ApiUser : Codable {
 	
-	var emails: [Email]?
+	public var emails: [Email]?
 	
-	var firstName: String?
-	var lastName: String?
-	var nickname: String?
+	public var firstName: String?
+	public var lastName: String?
+	public var nickname: String?
 	
-	var usersByServiceId: [String: ApiDirectoryUser?]
+	public var usersByServiceId: [String: ApiDirectoryUser?]
 	
 }

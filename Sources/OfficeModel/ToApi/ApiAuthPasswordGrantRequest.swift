@@ -8,7 +8,7 @@ public struct ApiAuthPasswordGrantRequest : Codable {
 	
 	public var grantType: String = "password"
 	
-	public var username: Email
+	public var username: TaggedId
 	public var password: String
 	
 	/** If `nil`, **must** be passed via Basic Auth (recommended configuration). */
@@ -18,7 +18,7 @@ public struct ApiAuthPasswordGrantRequest : Codable {
 	/** A space-separated list of auth scopes. */
 	public var scope: String
 	
-	public init(username: Email, password: String, clientId: String? = nil, clientSecret: String? = nil, scope: Set<AuthScope>) {
+	public init(username: TaggedId, password: String, clientId: String? = nil, clientSecret: String? = nil, scope: Set<AuthScope>) {
 		self.username = username
 		self.password = password
 		self.clientId = clientId
