@@ -18,14 +18,4 @@ public struct ApiPasswordReset : Codable {
 		self.serviceResets = serviceResets
 	}
 	
-//	public init(requestedUserId uid: TaggedId, multiPasswordResets: MultiServicesPasswordReset, environment: Environment) {
-//		requestedUserId = uid
-//		fetchErrorsByServiceId = multiPasswordResets.errorsByServiceId.mapValues{ ApiError(error: $0, environment: environment) }
-//
-//		isExecuting = multiPasswordResets.isExecuting
-//		serviceResets = multiPasswordResets.itemsByServiceId.mapValues{ resetPair in
-//			resetPair.flatMap{ ApiServicePasswordReset(passwordResetPair: $0, environment: environment) }
-//		}
-//	}
-	
 }

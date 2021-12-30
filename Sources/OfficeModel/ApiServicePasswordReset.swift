@@ -11,12 +11,11 @@ public struct ApiServicePasswordReset : Codable {
 	public var isExecuting: Bool
 	public var error: ApiError?
 	
-//	public init(passwordResetPair: AnyDSPasswordResetPair, environment: Environment) {
-//		userId = passwordResetPair.dsuPair.taggedId.id
-//
-//		hasRun = !passwordResetPair.passwordReset.isWeak
-//		isExecuting = passwordResetPair.passwordReset.isExecuting
-//		error = passwordResetPair.passwordReset.result?.failureValue.flatMap{ ApiError(error: $0, environment: environment) }
-//	}
+	public init(userId: String? = nil, hasRun: Bool, isExecuting: Bool, error: ApiError? = nil) {
+		self.userId = userId
+		self.hasRun = hasRun
+		self.isExecuting = isExecuting
+		self.error = error
+	}
 	
 }

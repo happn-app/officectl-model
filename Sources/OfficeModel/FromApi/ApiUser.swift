@@ -14,4 +14,12 @@ public struct ApiUser : Codable {
 	
 	public var usersByServiceId: [String: ApiDirectoryUser?]
 	
+	public init(emails: [Email]? = nil, firstName: String? = nil, lastName: String? = nil, nickname: String? = nil, usersByServiceId: [String : ApiDirectoryUser?]) {
+		self.emails = emails
+		self.firstName = firstName
+		self.lastName = lastName
+		self.nickname = nickname
+		self.usersByServiceId = usersByServiceId
+	}
+	
 }
