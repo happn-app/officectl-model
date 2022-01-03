@@ -7,8 +7,8 @@ import GenericJSON
 
 public struct ApiDirectoryUser : Codable {
 	
-	public var userId: TaggedId
-	public var persistentId: TaggedId?
+	public var userId: TaggedID
+	public var persistentId: TaggedID?
 	
 	public var identifyingEmail: Email?
 	public var otherEmails: [Email]?
@@ -20,7 +20,7 @@ public struct ApiDirectoryUser : Codable {
 	/* Note: We could use GenericStorage, but this would complexify conformance to Codable so we’ll keep JSON, at least for now. */
 	public var underlyingUser: JSON?
 	
-	public init(userId: TaggedId, persistentId: TaggedId? = nil, identifyingEmail: Email? = nil, otherEmails: [Email]? = nil, firstName: String? = nil, lastName: String? = nil, nickname: String? = nil, underlyingUser: JSON? = nil) {
+	public init(userId: TaggedID, persistentId: TaggedID? = nil, identifyingEmail: Email? = nil, otherEmails: [Email]? = nil, firstName: String? = nil, lastName: String? = nil, nickname: String? = nil, underlyingUser: JSON? = nil) {
 		self.userId = userId
 		self.persistentId = persistentId
 		self.identifyingEmail = identifyingEmail
