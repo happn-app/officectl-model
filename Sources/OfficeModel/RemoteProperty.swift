@@ -1,5 +1,7 @@
 import Foundation
 
+import Email
+
 
 
 /**
@@ -39,22 +41,39 @@ public enum RemoteProperty<Wrapped> {
 		self = .unset
 	}
 	
+	private enum CodingKeys : String, CodingKey {
+		
+		case state = "__HPN_officectl_RemoteProperty_state__value__"
+		case value
+		
+	}
+	
 }
 
 
-extension RemoteProperty : Codable where Wrapped : Codable {
+extension RemoteProperty : Decodable where Wrapped : Decodable {
 	
 	public init(from decoder: Decoder) throws {
-		let container = try decoder.container(keyedBy: CodingKeys.self)
-		let state = try container.decode(String.self, forKey: .state)
-		switch state {
-			case "set":         self = .set(try container.decode(Wrapped.self, forKey: .value))
-			case "unset":       self = .unset
-			case "unsupported": self = .unsupported
-			default: throw DecodingError.dataCorruptedError(forKey: .state, in: container, debugDescription: "Invalid state \(state) for a remote property.")
+		if let container = try? decoder.container(keyedBy: CodingKeys.self),
+			let state = try? container.decode(String.self, forKey: .state)
+		{
+			switch state {
+				case "set":         self = .set(try container.decode(Wrapped.self, forKey: .value))
+				case "unset":       self = .unset
+				case "unsupported": self = .unsupported
+				default: throw DecodingError.dataCorruptedError(forKey: .state, in: container, debugDescription: "Invalid state \(state) for a remote property.")
+			}
+		} else {
+			let container = try decoder.singleValueContainer()
+			self = try .set(container.decode(Wrapped.self))
 		}
 	}
 	
+}
+
+
+extension RemoteProperty : Encodable where Wrapped : Encodable {
+
 	public func encode(to encoder: Encoder) throws {
 		var container = encoder.container(keyedBy: CodingKeys.self)
 		switch self {
@@ -70,11 +89,13 @@ extension RemoteProperty : Codable where Wrapped : Codable {
 		}
 	}
 	
-	private enum CodingKeys : String, CodingKey {
-		
-		case state
-		case value
-		
+}
+
+
+extension KeyedDecodingContainer {
+	
+	func decode<T : Decodable>(_ type: RemoteProperty<T>.Type, forKey key: Key) throws -> RemoteProperty<T> {
+		return try decodeIfPresent(type, forKey: key) ?? .unset
 	}
 	
 }
