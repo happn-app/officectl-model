@@ -12,14 +12,14 @@ public struct ApiUser : Codable {
 	public var lastName: String?
 	public var nickname: String?
 	
-	public var usersByServiceId: [String: ApiDirectoryUser?]
+	public var usersByServiceID: [String: ApiDirectoryUser?]
 	
-	public init(emails: [Email]? = nil, firstName: String? = nil, lastName: String? = nil, nickname: String? = nil, usersByServiceId: [String : ApiDirectoryUser?]) {
+	public init(emails: [Email]? = nil, firstName: String? = nil, lastName: String? = nil, nickname: String? = nil, usersByServiceID: [String : ApiDirectoryUser?]) {
 		self.emails = emails
 		self.firstName = firstName
 		self.lastName = lastName
 		self.nickname = nickname
-		self.usersByServiceId = usersByServiceId
+		self.usersByServiceID = usersByServiceID
 	}
 	
 }

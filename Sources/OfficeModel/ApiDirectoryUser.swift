@@ -12,7 +12,7 @@ public struct ApiDirectoryUser : Codable {
 	public var userID: String
 	@RemoteProperty public var persistentID: String?
 	
-	@RemoteProperty public var identifyingEmail: Email?
+	@RemoteProperty public var identifyingEmail: Email??
 	@RemoteProperty public var otherEmails: [Email]?
 	
 	@RemoteProperty public var firstName: String??
@@ -34,7 +34,7 @@ public struct ApiDirectoryUser : Codable {
 		self.underlyingUser = underlyingUser
 	}
 	
-	public init(serviceID: String, userID: String, remotePersistentID: RemoteProperty<String>, remoteIdentifyingEmail: RemoteProperty<Email>, remoteOtherEmails: RemoteProperty<[Email]>, remoteFirstName: RemoteProperty<String?>, remoteLastName: RemoteProperty<String?>, remoteNickname: RemoteProperty<String?>, underlyingUser: JSON? = nil) {
+	public init(serviceID: String, userID: String, remotePersistentID: RemoteProperty<String>, remoteIdentifyingEmail: RemoteProperty<Email?>, remoteOtherEmails: RemoteProperty<[Email]>, remoteFirstName: RemoteProperty<String?>, remoteLastName: RemoteProperty<String?>, remoteNickname: RemoteProperty<String?>, underlyingUser: JSON? = nil) {
 		self.serviceID = serviceID
 		self.userID = userID
 		self._persistentID = remotePersistentID

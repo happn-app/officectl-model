@@ -5,13 +5,13 @@ import Foundation
 public struct ApiSearchResult<RequestType : Codable, ResultType : Codable> : Codable {
 	
 	public var request: RequestType
-	public var errorsByServiceId: [String: ApiError]
+	public var errorsByServiceID: [String: ApiError]
 	
 	public var result: ResultType
 	
-	public init(request: RequestType, errorsByServiceId: [String : ApiError], result: ResultType) {
+	public init(request: RequestType, errorsByServiceID: [String : ApiError], result: ResultType) {
 		self.request = request
-		self.errorsByServiceId = errorsByServiceId
+		self.errorsByServiceID = errorsByServiceID
 		self.result = result
 	}
 	

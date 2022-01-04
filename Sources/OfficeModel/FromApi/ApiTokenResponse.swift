@@ -6,7 +6,7 @@ import UnwrapOrThrow
 
 public struct ApiTokenResponse : Codable {
 	
-	public var userId: String
+	public var userID: String
 	
 	public var accessToken: String
 	public var tokenType: String = "bearer"
@@ -18,8 +18,8 @@ public struct ApiTokenResponse : Codable {
 	
 	public var refreshToken: String?
 	
-	public init(userId: String, accessToken: String, tokenType: String = "bearer", scope: Set<AuthScope>? = nil, expiresIn: TimeInterval? = nil, refreshToken: String? = nil) {
-		self.userId = userId
+	public init(userID: String, accessToken: String, tokenType: String = "bearer", scope: Set<AuthScope>? = nil, expiresIn: TimeInterval? = nil, refreshToken: String? = nil) {
+		self.userID = userID
 		self.accessToken = accessToken
 		self.tokenType = tokenType
 		self.scope = scope
@@ -31,7 +31,7 @@ public struct ApiTokenResponse : Codable {
 	public init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		
-		self.userId       = try container.decode(String.self, forKey: .userId)
+		self.userID       = try container.decode(String.self, forKey: .userID)
 		self.accessToken  = try container.decode(String.self, forKey: .accessToken)
 		self.tokenType    = try container.decode(String.self, forKey: .tokenType)
 		self.expiresIn    = try container.decodeIfPresent(Double.self, forKey: .expiresIn)
@@ -48,7 +48,7 @@ public struct ApiTokenResponse : Codable {
 	public func encode(to encoder: Encoder) throws {
 		var container = encoder.container(keyedBy: CodingKeys.self)
 		
-		try container.encode(userId,      forKey: .userId)
+		try container.encode(userID,      forKey: .userID)
 		try container.encode(accessToken, forKey: .accessToken)
 		try container.encode(tokenType,   forKey: .tokenType)
 		try container.encodeIfPresent(expiresIn,    forKey: .expiresIn)
@@ -58,7 +58,7 @@ public struct ApiTokenResponse : Codable {
 	}
 	
 	private enum CodingKeys : String, CodingKey {
-		case userId = "user_id"
+		case userID = "user_id"
 		
 		case accessToken = "access_token"
 		case tokenType = "token_type"

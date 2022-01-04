@@ -3,9 +3,9 @@ import Foundation
 
 
 /**
- A `TaggedID` is simple an id with a “namespace” (e.g. “email:a@example.com”, the tag is “email”, the id is “a@example.com”).
+ A `TaggedID` is simple an ID with a “namespace” (e.g. “email:a@example.com”, the tag is “email”, the ID is “a@example.com”).
  
- A tag in a tagged id should not contain a colon as the string representation of a tagged id is simply the tag followed by a colon and the id.
+ A tag in a tagged ID should not contain a colon as the string representation of a tagged ID is simply the tag followed by a colon and the ID.
  No backslashing is done on the tag, which means if a tag contains a colon,
  re-reading the TaggedID from its string reprsentation will not return the same TaggedID!
  
@@ -30,8 +30,8 @@ public struct TaggedID : LosslessStringConvertible {
 	}
 	
 	public init(tag t: String, id i: String) {
-//		if i.isEmpty       {OfficeKitConfig.logger?.warning("Initing a TaggedID with an empty id value.")}
-//		if t.contains(":") {OfficeKitConfig.logger?.error("Initing a TaggedID with a tag that contains a colon (tag=\(t)). Re-initing the tagged id from its string reprsentation will not produce the same tagged id!")}
+//		if i.isEmpty       {OfficeKitConfig.logger?.warning("Initing a TaggedID with an empty ID value.")}
+//		if t.contains(":") {OfficeKitConfig.logger?.error("Initing a TaggedID with a tag that contains a colon (tag=\(t)). Re-initing the tagged ID from its string reprsentation will not produce the same tagged ID!")}
 		
 		tag = t
 		id = i
