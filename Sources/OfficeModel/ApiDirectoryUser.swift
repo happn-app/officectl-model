@@ -34,4 +34,16 @@ public struct ApiDirectoryUser : Codable {
 		self.underlyingUser = underlyingUser
 	}
 	
+	public init(serviceID: String, userID: String, remotePersistentID: RemoteProperty<String>, remoteIdentifyingEmail: RemoteProperty<Email>, remoteOtherEmails: RemoteProperty<[Email]>, remoteFirstName: RemoteProperty<String?>, remoteLastName: RemoteProperty<String?>, remoteNickname: RemoteProperty<String?>, underlyingUser: JSON? = nil) {
+		self.serviceID = serviceID
+		self.userID = userID
+		self._persistentID = remotePersistentID
+		self._identifyingEmail = remoteIdentifyingEmail
+		self._otherEmails = remoteOtherEmails
+		self._firstName = remoteFirstName
+		self._lastName = remoteLastName
+		self._nickname = remoteNickname
+		self.underlyingUser = underlyingUser
+	}
+	
 }

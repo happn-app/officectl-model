@@ -7,14 +7,14 @@ import Foundation
  
  There are three states possible for the */
 @propertyWrapper
-public enum RemoteProperty<T> {
+public enum RemoteProperty<Wrapped> {
 	
-	case set(T)
+	case set(Wrapped)
 	case unset
 	
 	case unsupported
 	
-	public var wrappedValue: T? {
+	public var wrappedValue: Wrapped? {
 		get {
 			switch self {
 				case .set(let v):          return v
@@ -42,13 +42,13 @@ public enum RemoteProperty<T> {
 }
 
 
-extension RemoteProperty : Codable where T : Codable {
+extension RemoteProperty : Codable where Wrapped : Codable {
 	
 	public init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		let state = try container.decode(String.self, forKey: .state)
 		switch state {
-			case "set":         self = .set(try container.decode(T.self, forKey: .value))
+			case "set":         self = .set(try container.decode(Wrapped.self, forKey: .value))
 			case "unset":       self = .unset
 			case "unsupported": self = .unsupported
 			default: throw DecodingError.dataCorruptedError(forKey: .state, in: container, debugDescription: "Invalid state \(state) for a remote property.")
@@ -80,21 +80,9 @@ extension RemoteProperty : Codable where T : Codable {
 }
 
 
-extension KeyedEncodingContainer {
+extension RemoteProperty : Equatable where Wrapped : Equatable {
 	
-	mutating func encodeIfSet<T>(_ value: RemoteProperty<T>, forKey key: K) throws where T : Encodable {
-		switch value {
-			case .set(let v):          try encode(v, forKey: key)
-			case .unset, .unsupported: (/*nop*/)
-		}
-	}
-	
-}
-
-
-extension RemoteProperty : Equatable where T : Equatable {
-	
-	public static func ==(_ prop1: RemoteProperty<T>, _ prop2: RemoteProperty<T>) -> Bool {
+	public static func ==(_ prop1: RemoteProperty<Wrapped>, _ prop2: RemoteProperty<Wrapped>) -> Bool {
 		switch (prop1, prop2) {
 			case (.set(let v1), .set(let v2)):                   return v1 == v2
 			case (.unset, .unset), (.unsupported, .unsupported): return true
@@ -105,7 +93,7 @@ extension RemoteProperty : Equatable where T : Equatable {
 }
 
 
-extension RemoteProperty : Hashable where T : Hashable {
+extension RemoteProperty : Hashable where Wrapped : Hashable {
 	
 	public func hash(into hasher: inout Hasher) {
 		switch self {
@@ -117,3 +105,16 @@ extension RemoteProperty : Hashable where T : Hashable {
 	
 }
 
+
+/* Conveniences when RemoteProperty is not used as a property wrapper. */
+extension RemoteProperty {
+	
+	public func map<NewWrapped>(to type: NewWrapped.Type = NewWrapped.self, _ callback: (Wrapped) throws -> NewWrapped) rethrows -> RemoteProperty<NewWrapped> {
+		switch self {
+			case .unsupported: return .unsupported
+			case .unset:       return .unset
+			case .set(let v):  return try .set(callback(v))
+		}
+	}
+	
+}
