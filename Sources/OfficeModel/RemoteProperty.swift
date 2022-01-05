@@ -94,7 +94,7 @@ extension RemoteProperty : Encodable where Wrapped : Encodable {
 
 extension KeyedDecodingContainer {
 	
-	func decode<T : Decodable>(_ type: RemoteProperty<T>.Type, forKey key: Key) throws -> RemoteProperty<T> {
+	public func decode<T : Decodable>(_ type: RemoteProperty<T>.Type, forKey key: Key) throws -> RemoteProperty<T> {
 		return try decodeIfPresent(type, forKey: key) ?? .unset
 	}
 	
