@@ -6,14 +6,16 @@ import Foundation
 public struct ApiPasswordReset : Codable {
 	
 	public var requestedUserID: TaggedID
-	public var fetchErrorsByServiceID: [String: ApiError]
 	
+	/** `true` if at least one reset is in the `running` state. */
 	public var isExecuting: Bool
-	public var serviceResets: [String: ApiServicePasswordReset?]
+	/**
+	 Keys are service IDs.
+	 Service IDs of services that do not support a password reset are not in this dictionary. */
+	public var serviceResets: [String: ApiResult<ApiServicePasswordReset>]
 	
-	public init(requestedUserID: TaggedID, fetchErrorsByServiceID: [String : ApiError], isExecuting: Bool, serviceResets: [String : ApiServicePasswordReset?]) {
+	public init(requestedUserID: TaggedID, isExecuting: Bool, serviceResets: [String: ApiResult<ApiServicePasswordReset>]) {
 		self.requestedUserID = requestedUserID
-		self.fetchErrorsByServiceID = fetchErrorsByServiceID
 		self.isExecuting = isExecuting
 		self.serviceResets = serviceResets
 	}

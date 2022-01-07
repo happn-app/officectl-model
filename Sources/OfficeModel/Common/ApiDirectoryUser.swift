@@ -8,7 +8,6 @@ import GenericJSON
 public struct ApiDirectoryUser : Codable {
 	
 	public var serviceID: String
-	
 	public var userID: String
 	@RemoteProperty public var persistentID: String?
 	
