@@ -12,7 +12,7 @@ public struct ApiMergedUser : Codable {
 	public var lastName: String?
 	public var nickname: String?
 	
-	public init(emails: [Email]? = nil, firstName: String? = nil, lastName: String? = nil, nickname: String? = nil, directoryUsers: [String: ApiDirectoryUser]) {
+	public init(emails: [Email]? = nil, firstName: String? = nil, lastName: String? = nil, nickname: String? = nil) {
 		self.emails = emails
 		self.firstName = firstName
 		self.lastName = lastName

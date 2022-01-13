@@ -15,13 +15,13 @@ public struct ApiMultiServicesResults<Results : Codable, MergedResults : Codable
 	/** Only the errors by service IDs. */
 	public var errors: [String: ApiError] { results.compactMapValues{ $0.failure } }
 	
-	public init(serviceIDs: Set<String>, results: [String: ApiResult<Results>], mergedResults: MergedResults) {
+	public init(results: [String: ApiResult<Results>], mergedResults: MergedResults) {
 		self.results = results
 		self.mergedResults = mergedResults
 	}
 	
 }
 
-public typealias ApiUser = ApiMultiServicesResults<ApiDirectoryUser, ApiMergedUser>
+public typealias ApiUser = ApiMultiServicesResults<ApiDirectoryUser?, ApiMergedUser>
 public typealias ApiUsers = ApiMultiServicesResults<None, [ApiMergedUserWithSource]>
-public typealias ApiPasswordReset = ApiMultiServicesResults<ApiDirectoryPasswordReset, ApiMergedPasswordReset>
+public typealias ApiPasswordReset = ApiMultiServicesResults<ApiDirectoryPasswordReset?, ApiMergedPasswordReset>
