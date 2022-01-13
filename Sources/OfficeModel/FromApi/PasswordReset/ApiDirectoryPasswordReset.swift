@@ -2,8 +2,8 @@ import Foundation
 
 
 
-/** The structure representing a password reset for a single user on a single service. */
-public struct ApiServicePasswordReset : Codable {
+/** The structure representing a password reset for a single user on a single directory. */
+public struct ApiDirectoryPasswordReset : Codable {
 	
 	public enum Status : Codable {
 		
