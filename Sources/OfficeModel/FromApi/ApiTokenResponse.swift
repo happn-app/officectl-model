@@ -4,7 +4,7 @@ import UnwrapOrThrow
 
 
 
-public struct ApiTokenResponse : Codable {
+public struct ApiTokenResponse : Codable, Sendable {
 	
 	public var userID: String
 	

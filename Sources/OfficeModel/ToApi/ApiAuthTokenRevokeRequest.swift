@@ -2,9 +2,9 @@ import Foundation
 
 
 
-public struct ApiAuthTokenRevokeRequest : Codable {
+public struct ApiAuthTokenRevokeRequest : Codable, Sendable {
 	
-	public enum TokenType : String, Codable {
+	public enum TokenType : String, Codable, Sendable {
 		
 		case accessToken = "access_token"
 		case refreshToken = "refresh_token"

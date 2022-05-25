@@ -44,6 +44,9 @@ public struct TaggedID : LosslessStringConvertible {
 }
 
 
+extension TaggedID : Sendable {}
+
+
 extension TaggedID : Hashable {
 }
 

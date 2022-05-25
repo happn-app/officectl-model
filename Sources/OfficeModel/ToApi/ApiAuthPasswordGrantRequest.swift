@@ -4,7 +4,7 @@ import Email
 
 
 
-public struct ApiAuthPasswordGrantRequest : Codable {
+public struct ApiAuthPasswordGrantRequest : Codable, Sendable {
 	
 	public var grantType: String = "password"
 	

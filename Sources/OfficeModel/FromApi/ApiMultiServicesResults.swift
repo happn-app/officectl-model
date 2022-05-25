@@ -4,7 +4,6 @@ import Foundation
 
 public struct ApiMultiServicesResults<Results : Codable, MergedResults : Codable> : Codable {
 	
-	
 	/** The “raw” results by service IDs. */
 	public var results: [String: ApiResult<Results>]
 	/** The results merged in a single element. */
@@ -25,3 +24,6 @@ public struct ApiMultiServicesResults<Results : Codable, MergedResults : Codable
 public typealias ApiUser = ApiMultiServicesResults<ApiDirectoryUser?, ApiMergedUser>
 public typealias ApiUsers = ApiMultiServicesResults<None, [ApiMergedUserWithSource]>
 public typealias ApiPasswordReset = ApiMultiServicesResults<ApiDirectoryPasswordReset?, ApiMergedPasswordReset>
+
+
+extension ApiMultiServicesResults : Sendable where Results : Sendable, MergedResults : Sendable {}

@@ -5,7 +5,7 @@ import GenericJSON
 
 
 
-public struct ApiDirectoryUser : Codable {
+public struct ApiDirectoryUser : Codable, Sendable {
 	
 	public var serviceID: String
 	public var userID: String

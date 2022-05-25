@@ -4,7 +4,7 @@ import Email
 
 
 
-public struct ApiMergedUserWithSource : Codable {
+public struct ApiMergedUserWithSource : Codable, Sendable {
 	
 	public var emails: [Email]?
 	

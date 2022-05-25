@@ -3,9 +3,9 @@ import Foundation
 
 
 /** The structure representing a password reset for a single user on a single directory. */
-public struct ApiDirectoryPasswordReset : Codable {
+public struct ApiDirectoryPasswordReset : Codable, Sendable {
 	
-	public enum Status : Codable {
+	public enum Status : Codable, Sendable {
 		
 		case idle
 		case running

@@ -2,7 +2,7 @@ import Foundation
 
 
 
-public struct ApiService : Codable {
+public struct ApiService : Codable, Sendable {
 	
 	public var providerID: String
 	

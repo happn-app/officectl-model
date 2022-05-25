@@ -51,6 +51,9 @@ public enum RemoteProperty<Wrapped> {
 }
 
 
+extension RemoteProperty : Sendable where Wrapped : Sendable {}
+
+
 extension RemoteProperty : Decodable where Wrapped : Decodable {
 	
 	public init(from decoder: Decoder) throws {

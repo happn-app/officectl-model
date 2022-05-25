@@ -2,7 +2,7 @@ import Foundation
 
 
 
-public struct ApiMergedPasswordReset : Codable {
+public struct ApiMergedPasswordReset : Codable, Sendable {
 	
 	/** `true` if at least one reset is in the `running` state. */
 	public var isExecuting: Bool

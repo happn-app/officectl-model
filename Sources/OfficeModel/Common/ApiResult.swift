@@ -52,3 +52,6 @@ public enum ApiResult<Success : Codable> : Codable {
 	}
 	
 }
+
+
+extension ApiResult : Sendable where Success : Sendable {}
