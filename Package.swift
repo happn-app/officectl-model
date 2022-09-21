@@ -10,7 +10,7 @@ let package = Package(
 	dependencies: [
 		.package(url: "https://github.com/Frizlab/swift-email.git", from: "0.2.1"),
 		.package(url: "https://github.com/Frizlab/UnwrapOrThrow.git", from: "1.0.0-beta"),
-		.package(url: "https://github.com/zoul/generic-json-swift.git", from: "2.0.1")
+		.package(url: "https://github.com/iwill/generic-json-swift.git", from: "2.0.1")
 	],
 	targets: [
 		.target(
