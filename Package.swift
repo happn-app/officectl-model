@@ -16,7 +16,7 @@ let package = Package(
 	],
 	products: {
 		var ret = [Product]()
-		ret.append(.library(name: "OfficeModelCore", targets: ["Core"]))
+		ret.append(.library(name: "OfficeModelCore", targets: ["OfficeModelCore"]))
 		ret.append(.library(name: "OfficeModel", targets: ["OfficeModel"/* contains exported "Core" */]))
 		return ret
 	}(),
@@ -29,7 +29,8 @@ let package = Package(
 	}(),
 	targets: {
 		var ret = [Target]()
-		ret.append(.target(name: "Core", swiftSettings: commonSwiftSettings))
+		/* I’d have loved to have this called "Core", but Xcode is not really ready for a target name different than the library (import not seen by IDE but compilation pass). */
+		ret.append(.target(name: "OfficeModelCore", swiftSettings: commonSwiftSettings))
 		ret.append(.target(
 			name: "OfficeModel",
 			dependencies: {
@@ -37,7 +38,7 @@ let package = Package(
 				ret.append(.product(name: "Email",         package: "swift-email"))
 				ret.append(.product(name: "GenericJSON",   package: "generic-json-swift"))
 				ret.append(.product(name: "UnwrapOrThrow", package: "UnwrapOrThrow"))
-				ret.append(.target(name: "Core"))
+				ret.append(.target(name: "OfficeModelCore"))
 				return ret
 			}(),
 			swiftSettings: commonSwiftSettings

@@ -1,7 +1,5 @@
 import Foundation
 
-import Core
-
 
 
 public struct ApiMultiServicesResults<Results : Codable, MergedResults : Codable> : Codable {

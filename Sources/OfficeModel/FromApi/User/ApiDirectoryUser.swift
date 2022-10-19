@@ -3,8 +3,6 @@ import Foundation
 import Email
 @preconcurrency import GenericJSON
 
-import Core
-
 
 
 public struct ApiDirectoryUser : Codable, Sendable {

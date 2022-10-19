@@ -2,8 +2,6 @@ import Foundation
 
 import Email
 
-import Core
-
 
 
 public struct ApiAuthPasswordGrantRequest : Codable, Sendable {
