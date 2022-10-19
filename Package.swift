@@ -17,7 +17,7 @@ let package = Package(
 	products: {
 		var ret = [Product]()
 		ret.append(.library(name: "OfficeModelCore", targets: ["Core"]))
-		ret.append(.library(name: "OfficeModel", targets: ["OfficeModel", "Core"]))
+		ret.append(.library(name: "OfficeModel", targets: ["OfficeModel"/* contains exported "Core" */]))
 		return ret
 	}(),
 	dependencies: {
