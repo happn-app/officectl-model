@@ -5,7 +5,7 @@ import Foundation
 /**
  A wrapper for a property that is fetched on a remote source.
  
- There are three states possible for the */
+ There are three states possible for a RemoteProperty: set, unset, or unsupported. */
 @propertyWrapper
 public enum RemoteProperty<Wrapped> {
 	
@@ -74,7 +74,7 @@ extension RemoteProperty : Decodable where Wrapped : Decodable {
 
 
 extension RemoteProperty : Encodable where Wrapped : Encodable {
-
+	
 	public func encode(to encoder: Encoder) throws {
 		var container = encoder.container(keyedBy: CodingKeys.self)
 		switch self {
