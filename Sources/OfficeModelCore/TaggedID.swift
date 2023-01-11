@@ -20,6 +20,7 @@ public struct TaggedID : LosslessStringConvertible {
 		self.init(string: str)
 	}
 	
+#warning("TODO: Drop this init, use optional init instead and fail if there are no semicolon in the string.")
 	public init(string: String) {
 		let split = string.split(separator: ":", omittingEmptySubsequences: false)
 		
