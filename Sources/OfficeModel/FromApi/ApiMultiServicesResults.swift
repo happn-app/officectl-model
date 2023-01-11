@@ -5,16 +5,16 @@ import Foundation
 public struct ApiMultiServicesResults<Results : Codable, MergedResults : Codable> : Codable {
 	
 	/** The “raw” results by service IDs. */
-	public var results: [String: ApiResult<Results>]
+	public var results: [String: Result<Results, ApiError>]
 	/** The results merged in a single element. */
 	public var mergedResults: MergedResults
 	
 	/** The service IDs that were queried. */
-	public var serviceIDs: Set<String> { Set(results.keys) }
+	public var serviceIDs: Set<String> {Set(results.keys)}
 	/** Only the errors by service IDs. */
 	public var errors: [String: ApiError] { results.compactMapValues{ $0.failure } }
 	
-	public init(results: [String: ApiResult<Results>], mergedResults: MergedResults) {
+	public init(results: [String: Result<Results, ApiError>], mergedResults: MergedResults) {
 		self.results = results
 		self.mergedResults = mergedResults
 	}

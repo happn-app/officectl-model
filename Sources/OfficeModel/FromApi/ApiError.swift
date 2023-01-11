@@ -2,7 +2,7 @@ import Foundation
 
 
 
-public struct ApiError : Codable, Sendable {
+public struct ApiError : Error, Codable, Sendable {
 	
 	public var code: Int
 	public var domain: String

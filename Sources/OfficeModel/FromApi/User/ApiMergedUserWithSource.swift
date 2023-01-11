@@ -6,15 +6,19 @@ import Email
 
 public struct ApiMergedUserWithSource : Codable, Sendable {
 	
-	public var emails: [Email]?
-	
 	public var firstName: String?
 	public var lastName: String?
 	public var nickname: String?
 	
+	public var emails: [Email]?
+	
 	public var directoryUsers: [String: ApiDirectoryUser]
 	
-	public init(emails: [Email]? = nil, firstName: String? = nil, lastName: String? = nil, nickname: String? = nil, directoryUsers: [String: ApiDirectoryUser]) {
+	public init(
+		firstName: String? = nil, lastName: String? = nil, nickname: String? = nil,
+		emails: [Email]? = nil,
+		directoryUsers: [String: ApiDirectoryUser]
+	) {
 		self.emails = emails
 		self.firstName = firstName
 		self.lastName = lastName
