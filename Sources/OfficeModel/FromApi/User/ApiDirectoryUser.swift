@@ -7,6 +7,7 @@ import Email
 
 public struct ApiDirectoryUser : Codable, Sendable {
 	
+	/* For convenience, but not really a part of the user. */
 	public var serviceID: String
 	
 	public var userID: String
