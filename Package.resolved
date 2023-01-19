@@ -1,34 +1,41 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "GenericJSON",
-        "repositoryURL": "https://github.com/iwill/generic-json-swift.git",
-        "state": {
-          "branch": null,
-          "revision": "a137894b2a217abe489cdf1ea287e6f7819b1051",
-          "version": "2.0.1"
-        }
-      },
-      {
-        "package": "swift-email",
-        "repositoryURL": "https://github.com/Frizlab/swift-email.git",
-        "state": {
-          "branch": null,
-          "revision": "3bfbfda40f5cfb99a43467a48cf8c53a9ab317ce",
-          "version": "0.2.3"
-        }
-      },
-      {
-        "package": "UnwrapOrThrow",
-        "repositoryURL": "https://github.com/Frizlab/UnwrapOrThrow.git",
-        "state": {
-          "branch": null,
-          "revision": "b7a5ead174096f816030508f223a4f7030970299",
-          "version": "1.0.0-beta.1"
-        }
+  "pins" : [
+    {
+      "identity" : "generic-json-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/iwill/generic-json-swift.git",
+      "state" : {
+        "revision" : "a137894b2a217abe489cdf1ea287e6f7819b1051",
+        "version" : "2.0.1"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "legibleerror",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mxcl/LegibleError.git",
+      "state" : {
+        "revision" : "bc596702d7ff618c3f90ba480eeb48b3e83a2fbe",
+        "version" : "1.0.6"
+      }
+    },
+    {
+      "identity" : "swift-email",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Frizlab/swift-email.git",
+      "state" : {
+        "revision" : "3bfbfda40f5cfb99a43467a48cf8c53a9ab317ce",
+        "version" : "0.2.3"
+      }
+    },
+    {
+      "identity" : "unwraporthrow",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Frizlab/UnwrapOrThrow.git",
+      "state" : {
+        "revision" : "b7a5ead174096f816030508f223a4f7030970299",
+        "version" : "1.0.0-beta.1"
+      }
+    }
+  ],
+  "version" : 2
 }

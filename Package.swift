@@ -22,9 +22,10 @@ let package = Package(
 	}(),
 	dependencies: {
 		var ret = [Package.Dependency]()
-		ret.append(.package(url: "https://github.com/Frizlab/swift-email.git", from: "0.2.1"))
-		ret.append(.package(url: "https://github.com/Frizlab/UnwrapOrThrow.git", from: "1.0.0-beta"))
+		ret.append(.package(url: "https://github.com/Frizlab/swift-email.git",      from: "0.2.1"))
+		ret.append(.package(url: "https://github.com/Frizlab/UnwrapOrThrow.git",    from: "1.0.0-beta"))
 		ret.append(.package(url: "https://github.com/iwill/generic-json-swift.git", from: "2.0.1"))
+		ret.append(.package(url: "https://github.com/mxcl/LegibleError.git",        from: "1.0.0"))
 		return ret
 	}(),
 	targets: {
@@ -37,6 +38,7 @@ let package = Package(
 				var ret = [Target.Dependency]()
 				ret.append(.product(name: "Email",         package: "swift-email"))
 				ret.append(.product(name: "GenericJSON",   package: "generic-json-swift"))
+				ret.append(.product(name: "LegibleError",  package: "LegibleError"))
 				ret.append(.product(name: "UnwrapOrThrow", package: "UnwrapOrThrow"))
 				ret.append(.target(name: "OfficeModelCore"))
 				return ret
