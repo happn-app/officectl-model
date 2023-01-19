@@ -30,7 +30,7 @@ let package = Package(
 	targets: {
 		var ret = [Target]()
 		/* I’d have loved to have this called "Core", but Xcode is not really ready for a target name different than the library (import not seen by IDE but compilation pass). */
-		ret.append(.target(name: "OfficeModelCore", swiftSettings: commonSwiftSettings))
+		ret.append(.target(name: "OfficeModelCore", dependencies: ["UnwrapOrThrow"], swiftSettings: commonSwiftSettings))
 		ret.append(.target(
 			name: "OfficeModel",
 			dependencies: {

@@ -1,5 +1,7 @@
 import Foundation
 
+import UnwrapOrThrow
+
 
 
 /**
@@ -17,12 +19,7 @@ public struct TaggedID : LosslessStringConvertible {
 	public var id: String
 	
 	public init?(_ str: String) {
-		self.init(string: str)
-	}
-	
-#warning("TODO: Drop this init, use optional init instead and fail if there are no semicolon in the string.")
-	public init(string: String) {
-		let split = string.split(separator: ":", omittingEmptySubsequences: false)
+		let split = str.split(separator: ":", omittingEmptySubsequences: false)
 		
 		let t = String(split[0]) /* We do not omit empty subsequences, thus we know there will be at min 1 elmt in the resulting array */
 		let i = split.dropFirst().joined(separator: ":")
@@ -66,7 +63,7 @@ extension TaggedID : RawRepresentable {
 	public typealias RawValue = String
 	
 	public init?(rawValue: String) {
-		self.init(string: rawValue)
+		self.init(rawValue)
 	}
 	
 	public var rawValue: String {
@@ -80,7 +77,7 @@ extension TaggedID : Codable {
 	
 	public init(from decoder: Decoder) throws {
 		let container = try decoder.singleValueContainer()
-		try self.init(string: container.decode(String.self))
+		self = try Self(container.decode(String.self)) ?! DecodingError.dataCorruptedError(in: container, debugDescription: "Invalid tagged id.")
 	}
 	
 	public func encode(to encoder: Encoder) throws {
