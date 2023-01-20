@@ -12,6 +12,10 @@ public struct ApiError : Error, Codable, Sendable {
 		self.message = message
 	}
 	
+	public enum CodingKeys : String, CodingKey {
+		case message
+	}
+	
 }
 
 

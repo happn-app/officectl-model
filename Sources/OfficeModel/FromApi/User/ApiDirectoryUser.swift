@@ -43,4 +43,16 @@ public struct ApiDirectoryUser : Codable, Sendable {
 		self.nonStandardProperties = nonStandardProperties
 	}
 	
+	public enum CodingKeys : String, CodingKey {
+		case serviceID = "service_id"
+		case userID = "user_id"
+		case persistentID = "persistent_id"
+		case isSuspended = "is_suspended"
+		case firstName = "first_name"
+		case lastName = "last_name"
+		case nickname
+		case emails
+		case nonStandardProperties = "non_standard_properties"
+	}
+	
 }

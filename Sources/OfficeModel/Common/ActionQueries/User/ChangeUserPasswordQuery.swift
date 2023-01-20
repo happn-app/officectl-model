@@ -21,7 +21,7 @@ public struct ChangeUserPasswordQuery : Codable, Sendable {
 		self.newPassword = newPassword
 	}
 	
-	enum CodingKeys : String, CodingKey {
+	public enum CodingKeys : String, CodingKey {
 		case serviceIDs = "service_ids"
 		case newPassword = "new_password"
 	}

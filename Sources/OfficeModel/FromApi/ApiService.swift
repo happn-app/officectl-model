@@ -28,4 +28,13 @@ public struct ApiService : Codable, Sendable {
 		self.isGroupOfUsersService = isGroupOfUsersService
 	}
 	
+	public enum CodingKeys : String, CodingKey {
+		case providerID = "provider_id"
+		case serviceID = "service_id"
+		case serviceFullName = "service_full_name"
+		case isAuthService = "is_auth_service"
+		case isUserService = "is_user_service"
+		case isGroupOfUsersService = "is_group_of_users_service"
+	}
+	
 }

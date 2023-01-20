@@ -31,7 +31,7 @@ public struct CreateOrUpdateUserQuery : Codable, Sendable {
 		self.customProperties = customProperties
 	}
 	
-	enum CodingKeys : String, CodingKey {
+	public enum CodingKeys : String, CodingKey {
 		case serviceIDs = "service_ids"
 		case firstName = "first_name"
 		case lastName = "last_name"

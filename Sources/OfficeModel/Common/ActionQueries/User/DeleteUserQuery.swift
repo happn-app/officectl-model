@@ -12,7 +12,7 @@ public struct DeleteUserQuery : Codable, Sendable {
 		self.serviceIDs = serviceIDs
 	}
 	
-	enum CodingKeys : String, CodingKey {
+	public enum CodingKeys : String, CodingKey {
 		case serviceIDs = "service_ids"
 	}
 	

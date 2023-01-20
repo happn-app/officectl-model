@@ -29,4 +29,12 @@ public struct ApiMergedUser : Codable, Sendable {
 		self.emails = emails
 	}
 	
+	public enum CodingKeys : String, CodingKey {
+		case ids
+		case firstName = "first_name"
+		case lastName = "last_name"
+		case nickname
+		case emails
+	}
+	
 }
