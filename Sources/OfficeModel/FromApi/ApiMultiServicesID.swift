@@ -17,6 +17,16 @@ public struct ApiMultiServicesID : Sendable, Codable {
 		self.ids = Dictionary(taggedIDs.map{ ($0.tag, $0.id) }, uniquingKeysWith: { _, new in new })
 	}
 	
+	public init(from decoder: Decoder) throws {
+		let container = try decoder.singleValueContainer()
+		self.ids = try container.decode([String: String].self)
+	}
+	
+	public func encode(to encoder: Encoder) throws {
+		var container = encoder.singleValueContainer()
+		try container.encode(ids)
+	}
+	
 }
 
 
