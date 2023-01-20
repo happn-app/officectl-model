@@ -4,7 +4,10 @@ import Email
 
 
 
+/** The merge of multiple directory users. */
 public struct ApiMergedUser : Codable, Sendable {
+	
+	public var ids: ApiMultiServicesID
 	
 	public var firstName: String?
 	public var lastName: String?
@@ -13,9 +16,12 @@ public struct ApiMergedUser : Codable, Sendable {
 	public var emails: [Email]?
 	
 	public init(
+		ids: ApiMultiServicesID,
 		firstName: String? = nil, lastName: String? = nil, nickname: String? = nil,
 		emails: [Email]? = nil
 	) {
+		self.ids = ids
+		
 		self.firstName = firstName
 		self.lastName = lastName
 		self.nickname = nickname

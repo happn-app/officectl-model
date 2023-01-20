@@ -5,6 +5,7 @@ import Email
 
 
 
+/** The representation of a user in a single directory (e.g. an LDAP user). */
 public struct ApiDirectoryUser : Codable, Sendable {
 	
 	/* For convenience, but not really a part of the user. */
