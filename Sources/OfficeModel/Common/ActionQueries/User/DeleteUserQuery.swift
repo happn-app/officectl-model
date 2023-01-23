@@ -6,9 +6,9 @@ import Email
 
 public struct DeleteUserQuery : Codable, Sendable {
 	
-	public var serviceIDs: [String]?
+	public var serviceIDs: [Tag]?
 	
-	init(serviceIDs: [String]? = nil) {
+	init(serviceIDs: [Tag]? = nil) {
 		self.serviceIDs = serviceIDs
 	}
 	

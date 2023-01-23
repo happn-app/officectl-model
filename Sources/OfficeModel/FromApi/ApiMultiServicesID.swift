@@ -22,6 +22,8 @@ public struct ApiMultiServicesID : Sendable, Codable {
 	public init(from decoder: Decoder) throws {
 		let container = try decoder.singleValueContainer()
 		let dic = try container.decode([String: String].self)
+		/* We have to do the conversion manually even though we have properly created the extensions
+		 *  because they are not used when the object is encoded as top-level because we use a single value container. */
 		self.ids = try Dictionary(uniqueKeysWithValues: dic.map{ keyVal in
 			let tag = try Tag(keyVal.key) ?! DecodingError.dataCorruptedError(in: container, debugDescription: "Invalid tag found.")
 			return (tag, keyVal.value)
@@ -30,6 +32,8 @@ public struct ApiMultiServicesID : Sendable, Codable {
 	
 	public func encode(to encoder: Encoder) throws {
 		var container = encoder.singleValueContainer()
+		/* We have to do the conversion manually even though we have properly created the extensions
+		 *  because they are not used when the object is encoded as top-level because we use a single value container. */
 		try container.encode(Dictionary(uniqueKeysWithValues: ids.map{ ($0.key.rawValue, $0.value) }))
 	}
 	

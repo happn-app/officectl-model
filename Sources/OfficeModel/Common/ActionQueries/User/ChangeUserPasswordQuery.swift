@@ -6,7 +6,7 @@ import Email
 
 public struct ChangeUserPasswordQuery : Codable, Sendable {
 	
-	public var serviceIDs: [String]?
+	public var serviceIDs: [Tag]?
 	
 	/* Optional because
 	 *  1/ some services might support removing the password completly (e.g. LDAP) and
@@ -14,7 +14,7 @@ public struct ChangeUserPasswordQuery : Codable, Sendable {
 	public var newPassword: String?
 	
 	init(
-		serviceIDs: [String]? = nil,
+		serviceIDs: [Tag]? = nil,
 		newPassword: String
 	) {
 		self.serviceIDs = serviceIDs

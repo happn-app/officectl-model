@@ -9,7 +9,7 @@ import Email
 public struct ApiDirectoryUser : Codable, Sendable {
 	
 	/* For convenience, but not really a part of the user. */
-	public var serviceID: String
+	public var serviceID: Tag
 	
 	public var userID: String
 	public var persistentID: String?
@@ -25,7 +25,7 @@ public struct ApiDirectoryUser : Codable, Sendable {
 	public var nonStandardProperties: [String: JSON]
 	
 	public init(
-		serviceID: String,
+		serviceID: Tag,
 		userID: String, persistentID: String? = nil,
 		isSuspended: Bool? = nil,
 		firstName: String? = nil, lastName: String? = nil, nickname: String? = nil,

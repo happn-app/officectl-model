@@ -6,7 +6,7 @@ public struct ApiService : Codable, Sendable {
 	
 	public var providerID: String
 	
-	public var serviceID: String
+	public var serviceID: Tag
 	public var serviceFullName: String
 	
 	public var isAuthService: Bool
@@ -15,7 +15,7 @@ public struct ApiService : Codable, Sendable {
 	
 	public init(
 		providerID: String,
-		serviceID: String, serviceFullName: String,
+		serviceID: Tag, serviceFullName: String,
 		isAuthService: Bool, isUserService: Bool, isGroupOfUsersService: Bool
 	) {
 		self.providerID = providerID

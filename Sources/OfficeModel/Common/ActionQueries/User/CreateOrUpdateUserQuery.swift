@@ -7,7 +7,7 @@ import Email
 
 public struct CreateOrUpdateUserQuery : Codable, Sendable {
 	
-	public var serviceIDs: [String]?
+	public var serviceIDs: [Tag]?
 	
 	public var firstName: String?
 	public var lastName: String?
@@ -18,7 +18,7 @@ public struct CreateOrUpdateUserQuery : Codable, Sendable {
 	public var customProperties: [String: JSON]
 	
 	init(
-		serviceIDs: [String]? = nil,
+		serviceIDs: [Tag]? = nil,
 		firstName: String? = nil, lastName: String? = nil, nickname: String? = nil,
 		emails: [Email]? = nil,
 		customProperties: [String : JSON]
