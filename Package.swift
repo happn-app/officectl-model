@@ -45,6 +45,7 @@ let package = Package(
 			}(),
 			swiftSettings: commonSwiftSettings
 		))
+		ret.append(.testTarget(name: "OfficeModelTests", dependencies: ["OfficeModelCore", "OfficeModel"]))
 		return ret
 	}()
 )

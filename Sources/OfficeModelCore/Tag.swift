@@ -1,5 +1,7 @@
 import Foundation
 
+import UnwrapOrThrow
+
 
 
 public struct Tag : Sendable, Codable, Hashable, Equatable, RawRepresentable, LosslessStringConvertible, ExpressibleByStringLiteral {
@@ -75,3 +77,70 @@ public struct Tag : Sendable, Codable, Hashable, Equatable, RawRepresentable, Lo
 	}
 	
 }
+
+
+/* The overrides below would allow [Tag: T] objects to be encoded as actual dictionaries instead of an array of key-values.
+ * We do not really need this as the only place where we have a [Tag: T] dictionary, we encode it in a single value container and the trick does not work for this case.
+ * Indeed, it only works when the dictionary is embedded in another object.
+ * Instead we do the conversion manually where needed. */
+
+//extension KeyedEncodingContainer {
+//
+//	public mutating func encode<T : Encodable>(_ value: [Tag: T], forKey key: KeyedEncodingContainer<K>.Key) throws {
+//		try encode(Dictionary<String, T>(uniqueKeysWithValues: value.map{ ($0.key.rawValue, $0.value) }), forKey: key)
+//	}
+//
+//}
+//
+//extension UnkeyedEncodingContainer {
+//
+//	public mutating func encode<T : Encodable>(_ value: [Tag: T]) throws {
+//		try encode(Dictionary<String, T>(uniqueKeysWithValues: value.map{ ($0.key.rawValue, $0.value) }))
+//	}
+//
+//}
+//
+//extension SingleValueEncodingContainer {
+//
+//	public mutating func encode<T : Encodable>(_ value: [Tag: T]) throws {
+//		try encode(Dictionary<String, T>(uniqueKeysWithValues: value.map{ ($0.key.rawValue, $0.value) }))
+//	}
+//
+//}
+//
+//
+//extension KeyedDecodingContainer {
+//
+//	public func decode<T : Decodable>(_ type: [Tag: T].Type, forKey key: Key) throws -> [Tag: T] {
+//		let dic = try decode([String: T].self, forKey: key)
+//		return try Dictionary(uniqueKeysWithValues: dic.map{ keyVal in
+//			let tag = try Tag(keyVal.key) ?! DecodingError.dataCorruptedError(forKey: key, in: self, debugDescription: "Invalid tag found.")
+//			return (tag, keyVal.value)
+//		})
+//	}
+//
+//}
+//
+//extension UnkeyedDecodingContainer {
+//
+//	public mutating func decode<T : Decodable>(_ type: [Tag: T].Type) throws -> [Tag: T] {
+//		let dic = try decode([String: T].self)
+//		return try Dictionary(uniqueKeysWithValues: dic.map{ keyVal in
+//			let tag = try Tag(keyVal.key) ?! DecodingError.dataCorruptedError(in: self, debugDescription: "Invalid tag found.")
+//			return (tag, keyVal.value)
+//		})
+//	}
+//
+//}
+//
+//extension SingleValueDecodingContainer {
+//
+//	public func decode<T : Decodable>(_ type: [Tag: T].Type) throws -> [Tag: T] {
+//		let dic = try decode([String: T].self)
+//		return try Dictionary(uniqueKeysWithValues: dic.map{ keyVal in
+//			let tag = try Tag(keyVal.key) ?! DecodingError.dataCorruptedError(in: self, debugDescription: "Invalid tag found.")
+//			return (tag, keyVal.value)
+//		})
+//	}
+//
+//}

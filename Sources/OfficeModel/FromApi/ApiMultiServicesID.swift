@@ -1,5 +1,7 @@
 import Foundation
 
+import UnwrapOrThrow
+
 import OfficeModelCore
 
 
@@ -19,12 +21,16 @@ public struct ApiMultiServicesID : Sendable, Codable {
 	
 	public init(from decoder: Decoder) throws {
 		let container = try decoder.singleValueContainer()
-		self.ids = try container.decode([Tag: String].self)
+		let dic = try container.decode([String: String].self)
+		self.ids = try Dictionary(uniqueKeysWithValues: dic.map{ keyVal in
+			let tag = try Tag(keyVal.key) ?! DecodingError.dataCorruptedError(in: container, debugDescription: "Invalid tag found.")
+			return (tag, keyVal.value)
+		})
 	}
 	
 	public func encode(to encoder: Encoder) throws {
 		var container = encoder.singleValueContainer()
-		try container.encode(ids)
+		try container.encode(Dictionary(uniqueKeysWithValues: ids.map{ ($0.key.rawValue, $0.value) }))
 	}
 	
 }
