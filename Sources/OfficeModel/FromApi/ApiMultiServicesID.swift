@@ -6,9 +6,9 @@ import OfficeModelCore
 
 public struct ApiMultiServicesID : Sendable, Codable {
 	
-	public var ids: [String: String]
+	public var ids: [Tag: String]
 	
-	public init(ids: [String: String]) {
+	public init(ids: [Tag: String]) {
 		self.ids = ids
 	}
 	
@@ -19,7 +19,7 @@ public struct ApiMultiServicesID : Sendable, Codable {
 	
 	public init(from decoder: Decoder) throws {
 		let container = try decoder.singleValueContainer()
-		self.ids = try container.decode([String: String].self)
+		self.ids = try container.decode([Tag: String].self)
 	}
 	
 	public func encode(to encoder: Encoder) throws {
@@ -33,7 +33,7 @@ public struct ApiMultiServicesID : Sendable, Codable {
 extension ApiMultiServicesID {
 	
 	public var taggedIDs: [TaggedID] {
-		return ids.map{ TaggedID(tag: $0.key, id: $0.value)! }
+		return ids.map{ TaggedID(tag: $0.key, id: $0.value) }
 	}
 	
 }

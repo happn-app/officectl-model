@@ -8,45 +8,31 @@ import UnwrapOrThrow
  A `TaggedID` is simple an ID with a “namespace” (e.g. “email:a@example.com”, the tag is “email”, the ID is “a@example.com”).
  
  The tag **cannot** contain a colon, because we do not escape the tag (I am so lazy). */
-public struct TaggedID : LosslessStringConvertible {
+public struct TaggedID : Sendable, Hashable, LosslessStringConvertible {
 	
-	public let tag: String
+	public var tag: Tag
 	public var id: String
 	
 	public init?(_ str: String) {
 		let split = str.split(separator: ":", maxSplits: 1, omittingEmptySubsequences: false)
 		assert(split.count == 1 || split.count == 2)
 		
-		let t = String(split[0]) /* We do not omit empty subsequences, thus we know there will be at min 1 elmt in the resulting array */
-		let i = String(split.dropFirst().first ?? "")
+		let ts = String(split[0]) /* We do not omit empty subsequences, thus we know there will be at min 1 elmt in the resulting array */
+		let id = String(split.dropFirst().first ?? "")
 		
-		self.init(tag: t, id: i)
+		guard let t = Tag(ts) else {return nil}
+		self.init(tag: t, id: id)
 	}
 	
-	public init?(tag: String, id: String) {
-		guard !tag.contains(":") else {
-			return nil
-		}
-		
+	public init(tag: Tag, id: String) {
 		self.tag = tag
 		self.id = id
 	}
 	
 	public var stringValue: String {
-		return tag + ":" + id
+		return "\(tag):\(id)"
 	}
 	
-	public func changingTag(_ newTag: String) -> TaggedID? {
-		return TaggedID(tag: newTag, id: id)
-	}
-	
-}
-
-
-extension TaggedID : Sendable {}
-
-
-extension TaggedID : Hashable {
 }
 
 
