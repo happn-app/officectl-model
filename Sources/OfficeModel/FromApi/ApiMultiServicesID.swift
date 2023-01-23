@@ -33,7 +33,7 @@ public struct ApiMultiServicesID : Sendable, Codable {
 extension ApiMultiServicesID {
 	
 	public var taggedIDs: [TaggedID] {
-		return ids.map{ TaggedID(tag: $0.key, id: $0.value) }
+		return ids.map{ TaggedID(tag: $0.key, id: $0.value)! }
 	}
 	
 }
