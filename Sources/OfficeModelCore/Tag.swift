@@ -27,6 +27,9 @@ public struct Tag : Sendable, Codable, Hashable, Equatable, RawRepresentable, Lo
 	public init(from decoder: Decoder) throws {
 		let container = try decoder.singleValueContainer()
 		self.value = try container.decode(String.self)
+		guard !value.contains(":") else {
+			throw DecodingError.dataCorruptedError(in: container, debugDescription: "The value cannot contain a semicolon.")
+		}
 	}
 	
 	public func encode(to encoder: Encoder) throws {
