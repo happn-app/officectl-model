@@ -1,3 +1,10 @@
 # officectl-model
 
+---
+
+NOTE: This repo is no longer maintained by happn. +
+A maintained version is available from its creator at https://github.com/Frizlab/officectl-model[Frizlab/officectl-model].
+
+---
+
 The model for officectl’s API.
